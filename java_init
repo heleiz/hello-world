@@ -1,0 +1,80 @@
+package com.helei.init;
+
+class Log {
+	public static String fatherStaticString(){System.out.println("father's static field");return "";}
+	public static String sonStaticString(){System.out.println("son's static field");return "";}
+	public static String fatherNormalString(){System.out.println("father's normal field");return "";}
+	public static String sonNormalString(){System.out.println("son's normal field");return "";}
+}
+class Father{
+	String fatherNormalField1 = Log.fatherNormalString();
+	static String fatherStaticField1 = Log.fatherStaticString();
+	
+	{System.out.println("Father's normal block1");}
+	
+	static {System.out.println("Father's static block1");}
+	static {System.out.println("Father's static block2");}
+	
+	static String fatherStaticField2 = Log.fatherStaticString();
+	
+	{System.out.println("Father's normal block2");}
+	
+	String fatherNormalField2 = Log.fatherNormalString();
+
+	Father(){
+		System.out.println("Father's constructor");
+	}
+}
+public class Son extends Father {
+	String sonNormalField1 = Log.sonNormalString();
+	static String sonStaticField1 = Log.sonStaticString();
+	
+	{System.out.println("Son's normal block1");}
+	
+	static {System.out.println("Son's static block1");}
+	static {System.out.println("Son's static block2");}
+	
+	static String sonStaticField2 = Log.sonStaticString();
+	
+	{System.out.println("Son's normal block2");}
+	
+	String sonNormalField2 = Log.sonNormalString();
+	
+	Son(){
+		System.out.println("Son's constructor");
+	}
+	
+	public static void main(String[] args){
+		Son son1 = new Son();
+		Son son2 = new Son();
+	}
+}
+
+father's static field
+Father's static block1
+Father's static block2
+father's static field
+son's static field
+Son's static block1
+Son's static block2
+son's static field
+father's normal field
+Father's normal block1
+Father's normal block2
+father's normal field
+Father's constructor
+son's normal field
+Son's normal block1
+Son's normal block2
+son's normal field
+Son's constructor
+father's normal field
+Father's normal block1
+Father's normal block2
+father's normal field
+Father's constructor
+son's normal field
+Son's normal block1
+Son's normal block2
+son's normal field
+Son's constructor
